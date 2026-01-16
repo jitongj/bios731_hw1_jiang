@@ -43,7 +43,7 @@ The dataset is loaded directly from the `carData` package using:
 ```r
 library(carData)
 data("Prestige")
-
+```
 
 **##  Session Information**
 
