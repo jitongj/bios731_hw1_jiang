@@ -45,7 +45,7 @@ library(carData)
 data("Prestige")
 
 
-## Session Information
+**##  Session Information**
 
 The full output of `sessionInfo()` (including R version, platform, and package versions)
 is saved in `analysis/sessionInfo.txt`.
