@@ -43,3 +43,15 @@ The dataset is loaded directly from the `carData` package using:
 ```r
 library(carData)
 data("Prestige")
+
+
+## Session Information
+
+The full output of `sessionInfo()` (including R version, platform, and package versions)
+is saved in `analysis/sessionInfo.txt`.
+
+Key libraries used in this project include:
+- carData (3.0-5)
+- rmarkdown (2.28)
+- knitr (1.48)
+
