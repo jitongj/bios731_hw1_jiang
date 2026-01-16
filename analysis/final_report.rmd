@@ -1,0 +1,136 @@
+---
+title: "Analysis of Women income and education of Prestige"
+author: "Jitong Jiang"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    code_folding: hide
+    toc: true
+    toc_float: true
+    theme: default
+params:
+  state: "nc"
+  download_raw_data: false
+hitheme: tomorrow
+highlighter: highlight.js
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(here)
+
+knitr::opts_chunk$set(echo = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  fig.width = 9,
+  fig.height = 6,
+  fig.path = "../results/"
+)
+
+theme_set(theme_bw() + theme(legend.position = "bottom"))
+```
+
+## Download data
+
+The Prestige dataset, from the carData package, contains information on
+102 occupations and 6 variables derived from Canadian census data and
+social surveys conducted in the 1960s and early 1970s. The variables
+include:
+
+-   education: Average years of education of occupational incumbents in
+    1971
+
+-   income: Average income (in dollars) of incumbents in 1971
+
+-   women: Percentage of incumbents who are women
+
+-   prestige: Pineo–Porter prestige score based on a mid-1960s social
+    survey
+
+-   census: Canadian census occupational code
+
+-   type: Occupational category (blue collar, white collar, or
+    professional)
+
+This analysis focuses on professional occupations only. The research
+question is: Among **professional** occupations, how are the percentage
+of women in an occupation and the average years of education related to
+average income?
+
+```{r}
+if(!file.exists((here::here("data", "raw.RData")))){
+  source(here("codes", "01_data_download.R"))
+}else{
+  load(here::here("data", "raw.RData"))
+}
+  
+```
+
+## Clean data
+
+The Prestige dataset was loaded and restricted to professional
+occupations only. Occupation names were converted from row names to a
+variable, and only the variables relevant to the analysis (education,
+income, and percentage of women) were retained. Observations with
+missing values were removed to ensure complete data for all included
+occupations.
+
+```{r}
+if(!file.exists((here::here("data", "clean.Rdata")))){
+  source(here("codes", "02_data_cleaning.R")) 
+}else{
+  load(here::here("data", "clean.Rdata"))
+}
+Prestige
+```
+
+## Modeling
+
+Let $Y_i$ denote the average income for occupation $i$,
+$\text{Education}_i$ the average years of education, and
+$\text{Women}_i$ the percentage of women in the occupation. The model is
+
+$$
+Y_i = \beta_0 + \beta_1 \,\text{Education}_i + \beta_2 \,\text{Women}_i + \varepsilon_i,
+$$
+
+where $\varepsilon_i$ are independent error terms with mean zero and
+constant variance.
+
+```{r}
+if(!file.exists((here::here("data", "analysis.Rdata")))){
+  source(here("codes", "03_data_analysis.R")) 
+}else{
+  load(here::here("data", "analysis.Rdata"))
+}
+
+summary(income_lm)
+```
+
+The linear regression model fitted with income as the response variable
+and education and the percentage of women as predictors shows that the
+women percantion in professional occupation is significantly negatively
+associated with income, while education time shows a positive but
+statistically insignificant association.
+
+## Visualization
+
+```{r}
+source(here("codes", "04_data_visualization.R"))
+```
+
+```{r, income_vs_edu}
+plot1
+```
+
+```{r, income_vs_women}
+plot2
+```
+
+The scatter plots with fitted regression lines show a positive
+association between education and income, and a negative association
+between the percentage of women in and income. These are consist with
+the results in the previous linear model.
