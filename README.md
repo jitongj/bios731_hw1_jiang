@@ -65,11 +65,16 @@ time zone: America/New_York
 tzcode source: internal
 
 attached base packages:
-[1] stats graphics grDevices utils datasets methods base
+[1] stats     graphics  grDevices utils     datasets  methods  
+[7] base     
 
 other attached packages:
 [1] carData_3.0-5
 
 loaded via a namespace (and not attached):
-[1] compiler_4.4.0 fastmap_1.2.0 cli_3.6.5 ...
+ [1] compiler_4.4.0    fastmap_1.2.0     cli_3.6.5        
+ [4] htmltools_0.5.8.1 tools_4.4.0       rstudioapi_0.16.0
+ [7] yaml_2.3.10       rmarkdown_2.28    grid_4.4.0       
+[10] knitr_1.48        xfun_0.51         digest_0.6.37    
+[13] rlang_1.1.6       evaluate_0.24.0
 
