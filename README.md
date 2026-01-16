@@ -45,7 +45,7 @@ library(carData)
 data("Prestige")
 ```
 
-**##  Session Information**
+**Session Information**
 
 The following is the output of `sessionInfo()` used for this analysis:
 
