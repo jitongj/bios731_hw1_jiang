@@ -47,11 +47,29 @@ data("Prestige")
 
 **##  Session Information**
 
-The full output of `sessionInfo()` (including R version, platform, and package versions)
-is saved in `analysis/sessionInfo.txt`.
+The following is the output of `sessionInfo()` used for this analysis:
 
-Key libraries used in this project include:
-- carData (3.0-5)
-- rmarkdown (2.28)
-- knitr (1.48)
+```text
+R version 4.4.0 (2024-04-24)
+Platform: aarch64-apple-darwin20
+Running under: macOS 26.1
+
+Matrix products: default
+BLAS:   /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib 
+LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+time zone: America/New_York
+tzcode source: internal
+
+attached base packages:
+[1] stats graphics grDevices utils datasets methods base
+
+other attached packages:
+[1] carData_3.0-5
+
+loaded via a namespace (and not attached):
+[1] compiler_4.4.0 fastmap_1.2.0 cli_3.6.5 ...
 
